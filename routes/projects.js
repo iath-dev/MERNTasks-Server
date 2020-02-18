@@ -17,10 +17,20 @@ router.post('/',
 
 router.get('/',
     auth,
+    ProjectController.getProjects
+);
+
+router.put('/:id',
+    auth,
     [
         check('title', "El nombre del proyecto es obligatorio").not().isEmpty()
     ],
-    ProjectController.createProject
+    ProjectController.updateProject
+);
+
+router.delete('/:id',
+    auth,
+    ProjectController.deleteProject
 );
 
 module.exports = router;
