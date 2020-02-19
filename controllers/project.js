@@ -1,6 +1,5 @@
 const Project = require('../models/projects');
 const { validationResult } = require('express-validator');
-const jwt = require('jsonwebtoken');
 
 exports.createProject = async (req, res) => {
 
@@ -8,13 +7,14 @@ exports.createProject = async (req, res) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()) {
         return res.status(500).json({
+            status: false,
             errors: errors.array()
         })
     }
 
 
     try {
-        // Revisar si ya existe el usuario o no.
+        // Crear el documento
         let project = new Project(req.body);
 
         // Guardar el creador via JWT
