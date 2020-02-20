@@ -1,11 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const cors = require('cors');
 
 // Crear el servidor
 const app = express();
 
 // Conectar base de datos
 connectDB();
+
+// Habilitar el cors
+app.use(cors())
 
 // Habilitar Express.json
 app.use(express.json({ extended: true }));
@@ -17,6 +21,7 @@ const PORT = process.env.PORT || 4000;
 /*app.get('/', (req, res) => {
     res.send('Hola Mundo');
 })*/
+
 
 // Importar Rutas
 app.use('/api/users', require('./routes/users'));
