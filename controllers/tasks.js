@@ -10,7 +10,7 @@ exports.createTask = async (req, res) => {
         return res.status(500).json({
             status: false,
             errors: errors.array()
-        })
+        });
     }
 
     // Extraer y verificar si existe el proyecto
@@ -45,16 +45,16 @@ exports.createTask = async (req, res) => {
         res.status(200).json({
             status: true,
             task,
-        })
+        });
         
     } catch (error) {
         console.log(error);
         res.json({
             state: false,
             msg: 'Hubo un error',
-        })
+        });
     }
-}
+};
 
 // Obtener tareas
 exports.getTasks = async (req, res) => {
@@ -82,17 +82,17 @@ exports.getTasks = async (req, res) => {
         const tasks = await Task.find({ pid: pid })
         res.status(200).json({
             tasks
-        })
+        });
         
     } catch (error) {
         console.log(error);
         res.json({
             state: false,
             msg: 'Hubo un error',
-        })
+        });
     }
-}
+};
 
 exports.updateTask = async (req, res) => {
-    
-}
+
+};
