@@ -59,7 +59,7 @@ exports.createTask = async (req, res) => {
 // Obtener tareas
 exports.getTasks = async (req, res) => {
     try {
-        const { pid } = req.body;
+        const { pid } = req.query;
 
         const project = await Project.findById(pid);
 
@@ -130,13 +130,8 @@ exports.updateTask = async (req, res) => {
 
         const update = {};
 
-        if (name) {
-            update.name = name;
-        }
-
-        if (state) {
-            update.state = state;
-        }
+        update.name = name;
+        update.state = state;
 
         // Actualizar
         task = await Task.findByIdAndUpdate({ _id: id }, { $set: update }, { new: true });
