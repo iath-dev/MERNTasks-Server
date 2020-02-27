@@ -15,7 +15,7 @@ app.use(cors())
 app.use(express.json({ extended: true }));
 
 // Puerto de la App
-const port = process.env.port || 4000;
+const port = process.env.PORT || 4000;
 
 // Definir pagina principal
 /*app.get('/', (req, res) => {
